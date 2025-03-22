@@ -9,11 +9,27 @@
     <title>Flower</title>
   </head>
   <body class="container">
-    <audio src="./sound/flowers.mp3" autoplay></audio>
-    <div id="lyrics">
+  <audio id="myAudio" src="./sound/flowers.mp3" autoplay preload="auto"></audio>
+  <div id="lyrics"></div>
 
-    </div>
-    <h1 class="titulo">Estas flores amarillas son un reflejo tu alegria. <br> <br>
+  <script>
+    // Intento adicional de reproducción automática
+    window.addEventListener('load', function() {
+      var audio = document.getElementById('myAudio');
+      var playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          // La reproducción automática comenzó con éxito
+        }).catch(function(error) {
+          // La reproducción automática fue impedida por el navegador
+          console.log("Reproducción automática no permitida: " + error);
+          // Puedes mostrar un botón aquí para permitir al usuario iniciar manualmente
+        });
+      }
+    });
+  </script>
+        <h1 class="titulo">Estas flores amarillas son un reflejo tu alegria. <br> <br>
       Sigue brillando cada dia.</h1>
 
     <div class="night"></div>
